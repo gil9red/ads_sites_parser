@@ -1,0 +1,56 @@
+# Настройка парсинга категорий
+categories:
+    # Настройка работы с страницами категорий
+    # Если end и max не указаны (равны null или ~) или меньше start, то парсится страница с номером start
+    # Если end не null или ~, то max игнорируется.
+    page:
+        # Указание с какой страницы начинать парсинг
+        start: 1
+
+        # Указание до какой страниц (включительно) парсить. Если указано end, то max игнорируется.
+        end: ~
+
+        # Количество страниц, которые будут распарсены
+        max: ~
+
+    # Список "корней" категорий объявлений: Работа, Услуги, Техника и т.п.
+    urls:
+        - http://saint-petersburg.irr.ru/computers-devices/notebooks/notebooks/
+        - http://magnitogorsk.irr.ru/furniture-interior/bedroom/
+
+# Список адресов объявлений
+ad_urls: ~
+#ad_urls:
+#    - http://saint-petersburg.irr.ru/computers-devices/notebooks/notebooks/Prodam-noutbuk-Samsung-P28-advert505767083.html
+#    - http://magnitogorsk.irr.ru/furniture-interior/bedroom/beds/Prodam-detskoe-spal-noe-mesto-s-detskim-ugolkom-advert505831882.html
+#    - http://magnitogorsk.irr.ru/furniture-interior/bedroom/beds/Krovat-Domino-iz-ldsp-i-ekokozhi-Lyuks-advert504852361.html
+#    - http://saint-petersburg.irr.ru/computers-devices/notebooks/notebooks/Vysota-18-mm-Chastota-pamyati-1600-MGc-Cvet-advert504531805.html
+#    - http://saint-petersburg.irr.ru/computers-devices/notebooks/notebooks/Prodam-noutbuk-Sony-4-yadra-igrovoy-advert505505781.html
+
+# Сколько нужно набрать телефонов. Если null или ~ -- парсинг, пока не закончатся страницы ad_urls и найденные
+# адреса объявлений у категорий (categories/urls)
+need_phones: 15
+
+# Файл, в который будут сохранены результаты парсинга (null или ~ -- не нужно сохранять в файл)
+# mode допускает следующие варианты:
+#   w -- перезаписывание файла
+#   a -- добавление в конец файла
+out:
+    file_name: out.txt
+    mode: w
+
+# Информация о используемой прокси
+proxy:
+    url: ~
+    type: http
+    enabled: false
+
+# Настройка логирования
+log:
+    # Файл, в котором логируются события скрипта (~ -- если не нужно логировать в файл)
+    out: log.txt
+
+    # Формат логированных сообщений
+    format: ~
+
+    enabled: true
