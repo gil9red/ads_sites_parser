@@ -138,7 +138,7 @@ class MgnBarNet_SiteAdParser(AbstractSiteAdParser):
         xpath = '//table[@class="author_ob"]//a[contains(@onclick, "viewphone")]'
         select = g.doc.select(xpath)
         if select.count() == 0:
-            logger.warn('Телефон не указан, адрес объявления: %s, xpath="%s".\n', ad_url, xpath)
+            logger.warn('Телефон не указан, адрес объявления: %s, xpath="%s".', ad_url, xpath)
             return []
 
         # В атрибуте описан js-скрипт, в котором есть 2 значения, нужных нам: key и br

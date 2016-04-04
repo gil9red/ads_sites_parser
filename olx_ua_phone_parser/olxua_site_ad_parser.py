@@ -121,7 +121,7 @@ class OlxUa_SiteAdParser(AbstractSiteAdParser):
         # Проверим наличие тега, сообщающего о том, что объявление не активно
         select = g.doc.select('//div[@id="offer_removed_by_user"]')
         if select.count():
-            logger.warn('Объявление не активно\n')
+            logger.warn('Объявление не активно.')
             return []
 
         # В классе хранится информация, нужная для ajax запроса
@@ -167,7 +167,7 @@ class OlxUa_SiteAdParser(AbstractSiteAdParser):
             return [phones_value.strip()]
 
         else:
-            logger.warn('Не найден телефон ({})\n'.format(xpath))
+            logger.warn('Не найден телефон (%s).', xpath)
             return []
 
     def processing_phones(self, phone):

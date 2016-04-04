@@ -126,18 +126,18 @@ class IrrRu_SiteAdParser(AbstractSiteAdParser):
         xpath = '//div[@class="noactual_adv"]'
         select = g.doc.select(xpath)
         if select.count() == 1:
-            logger.info('Объявление удалено.\n')
+            logger.info('Объявление удалено.')
             return []
 
         xpath = '//div[@class="productPage__phoneText js-productPagePhoneLabel"]'
         select = g.doc.select(xpath)
         if select.count() == 0:
-            logger.warn('Не нашел кнопки "Показать". xpath="%s".\n', xpath)
+            logger.warn('Не нашел кнопки "Показать". xpath="%s".', xpath)
             return []
 
         data_phone = select.attr('data-phone', None)
         if data_phone is None:
-            logger.warn('Телефон не указан.\n')
+            logger.warn('Телефон не указан.')
             return []
 
         logger.info('Закодированный в base64 телефон получен: "%s".', data_phone)

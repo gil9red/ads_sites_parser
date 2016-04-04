@@ -170,7 +170,7 @@ class AbstractSiteAdParser(metaclass=ABCMeta):
             if self.ad_urls:
                 logger.debug('Начинаю парсить, указанные в конфиге, адреса объявлений (%s).', len(self.ad_urls))
                 self.parse_ad_urls(self.ad_urls, self.need_phones)
-                logger.debug('Закончен парсинг, найдено %s телефонов.\n', len(self.list_phones))
+                logger.debug('Закончен парсинг, найдено %s телефонов.', len(self.list_phones))
 
             logger.debug('Начинаю парсить категории объявлений (%s).', len(self.categories_urls))
 
@@ -189,7 +189,7 @@ class AbstractSiteAdParser(metaclass=ABCMeta):
 
                 # Номер последней страницы в категории объявлений
                 last_page_category = self.get_last_page_category(url)
-                logger.debug('Номер последней страницы в категории объявлений: {}.\n'.format(last_page_category))
+                logger.debug('Номер последней страницы в категории объявлений: {}.'.format(last_page_category))
 
                 # Проходим по страницам данной категории
                 for page in range(self.start_page, end_page + 1):
@@ -210,7 +210,7 @@ class AbstractSiteAdParser(metaclass=ABCMeta):
 
                         self.parse_ad_urls(urls_ad, self.need_phones)
 
-                        logger.debug('Закончен парсинг страницы категории.\n')
+                        logger.debug('Закончен парсинг страницы категории.')
 
                     except NeedPhonesComplete:
                         # Пробрасываем выше -- там ожидается это исключение
@@ -219,7 +219,7 @@ class AbstractSiteAdParser(metaclass=ABCMeta):
                     except Exception as e:
                         logger.error(e, exc_info=True)
 
-            logger.debug('Закончен парсинг категорий объявлений. Найдено %s телефонов.\n', len(self.list_phones))
+            logger.debug('Закончен парсинг категорий объявлений. Найдено %s телефонов.', len(self.list_phones))
 
         except NeedPhonesComplete:
             pass
@@ -241,7 +241,7 @@ class AbstractSiteAdParser(metaclass=ABCMeta):
         for url in ad_urls:
             try:
                 if url in self.visited_ad_urls:
-                    logger.info('Объявление {} уже было распарсено.\n'.format(url))
+                    logger.info('Объявление {} уже было распарсено.'.format(url))
                     continue
 
                 logger.debug('Выполняю разбор объявления %s.', url)
@@ -253,12 +253,12 @@ class AbstractSiteAdParser(metaclass=ABCMeta):
                 for phone in ad_phones:
                     try:
                         if phone in self.list_phones:
-                            logger.info('Телефон "%s" уже есть в списке.\n', phone)
+                            logger.info('Телефон "%s" уже есть в списке.', phone)
                         else:
                             phone = self.processing_phones(phone)
                             self.list_phones.add(phone)
 
-                            logger.info('Номер телефона: %s.\n', phone)
+                            logger.info('Номер телефона: %s.', phone)
 
                             # Если need_phones указано и набрано нужное количество телефонов
                             if isinstance(need_phones, int) and need_phones == len(self.list_phones):
